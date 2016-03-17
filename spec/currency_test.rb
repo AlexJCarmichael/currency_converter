@@ -27,4 +27,16 @@ class CurrencyTest < Minitest::Test
     assert_equal(Currency.new(125, 'JPY'), Currency.new(125, 'JPY'))
   end
 
+  def test_currency_must_be_the_same_type
+    refute_equal(Currency.new(10, 'USD'), Currency.new(10, 'JPY'))
+    refute_equal(Currency.new(20, 'USD'), Currency.new(20, 'JPY'))
+    refute_equal(Currency.new(125, 'JPY'), Currency.new(125, 'USD'))
+  end
+
+  def test_currency_is_not_equal_if_ammount_is_different
+    refute_equal(Currency.new(10, 'USD'), Currency.new(11, 'USD'))
+    refute_equal(Currency.new(20, 'USD'), Currency.new(21, 'USD'))
+    refute_equal(Currency.new(125, 'JPY'), Currency.new(126, 'JPY'))
+  end
+
 end

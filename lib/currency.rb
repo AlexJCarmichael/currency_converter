@@ -14,6 +14,8 @@ class Currency
   end
 
   def ==(other)
-    self.amount == other.amount
+    if self.currency_code == other.currency_code
+      self.amount == other.amount
+    end
   end
 end
