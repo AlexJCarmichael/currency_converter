@@ -1,8 +1,10 @@
 
-
-# Should be able to be subtracted by another Currency object with the same currency code
-# Should raise a DifferentCurrencyCodeError when you try to add or subtract two Currency objects with different currency codes.
 # Should be able to be multiplied by a Fixnum or Float and return a new Currency object
+class DifferentCurrencyCodeError < StandardError
+ def message
+   "You cannot add or subtract currencies unless they are from the same government"
+ end
+end
 
 class Currency
   attr_accessor :amount, :currency_code
@@ -18,6 +20,7 @@ class Currency
   end
 
   def +(other)
+    raise DifferentCurrencyCodeError unless self.currency_code == other.currency_code
     if self.currency_code == other.currency_code
       code = self.currency_code
       Currency.new((self.amount + other.amount), code)
@@ -25,6 +28,7 @@ class Currency
   end
 
   def -(other)
+    raise DifferentCurrencyCodeError unless self.currency_code == other.currency_code
     if self.currency_code == other.currency_code
       code = self.currency_code
       Currency.new((self.amount - other.amount), code)

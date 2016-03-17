@@ -50,9 +50,12 @@ class CurrencyTest < Minitest::Test
   end
 
   def test_currencies_without_the_same_code_cannot_be_added
-    assert_equal(nil, (c(10, 'JPY') + c(10, 'USD')))
-    assert_equal(nil, (c(20, 'JPY') + c(20, 'USD')))
-    assert_equal(nil, (c(125, 'USD')+ c(125, 'JPY')))
+    assert_raises(DifferentCurrencyCodeError) do (c(10, 'JPY') + c(10, 'USD'))
+    end
+    assert_raises(DifferentCurrencyCodeError) do (c(20, 'JPY') + c(20, 'USD'))
+    end
+    assert_raises(DifferentCurrencyCodeError) do (c(125, 'USD') + c(125, 'JPY'))
+    end
   end
 
   def test_subtracting_currencies_from_each_other
@@ -62,9 +65,13 @@ class CurrencyTest < Minitest::Test
   end
 
   def test_currencies_without_the_same_code_cannot_be_subtracted
-    assert_equal(nil, (c(10, 'JPY') - c(10, 'USD')))
-    assert_equal(nil, (c(20, 'JPY') - c(20, 'USD')))
-    assert_equal(nil, (c(125, 'USD') - c(125, 'JPY')))
+    assert_raises(DifferentCurrencyCodeError) do (c(10, 'JPY') - c(10, 'USD'))
+    end
+    assert_raises(DifferentCurrencyCodeError) do (c(20, 'JPY') - c(20, 'USD'))
+    end
+    assert_raises(DifferentCurrencyCodeError) do (c(125, 'USD') - c(125, 'JPY'))
+    end
   end
+
 
 end
