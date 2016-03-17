@@ -7,12 +7,18 @@ class CurrencyTest < Minitest::Test
   end
 
   def test_exists?
-    currency = Currency.new(5)
+    currency = Currency.new(5, nil)
     assert(currency)
   end
 
   def test_amount
-    currency = Currency.new(5)
+    currency = Currency.new(5, nil)
     assert_equal(currency.amount, 5)
   end
+
+  def test_currency_code
+    currency = Currency.new(nil, 5)
+    assert_equal(currency.currency_code, 5)
+  end
+
 end

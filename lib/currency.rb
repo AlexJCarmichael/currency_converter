@@ -1,4 +1,4 @@
-# Should be created with an amount and a currency code
+
 # Should equal another Currency object with the same amount and currency code
 # Should NOT equal another Currency object with different amount or currency code
 # Should be able to be added to another Currency object with the same currency code
