@@ -1,5 +1,5 @@
 
-# Should equal another Currency object with the same amount and currency code
+
 # Should NOT equal another Currency object with different amount or currency code
 # Should be able to be added to another Currency object with the same currency code
 # Should be able to be subtracted by another Currency object with the same currency code
@@ -11,5 +11,9 @@ class Currency
   def initialize(amount, currency_code)
     @amount = amount
     @currency_code = currency_code
+  end
+
+  def ==(other)
+    self.amount == other.amount
   end
 end

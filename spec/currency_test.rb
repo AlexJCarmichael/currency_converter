@@ -17,8 +17,14 @@ class CurrencyTest < Minitest::Test
   end
 
   def test_currency_code
-    currency = Currency.new(nil, 5)
-    assert_equal(currency.currency_code, 5)
+    currency = Currency.new(nil, 'USD')
+    assert_equal(currency.currency_code, 'USD')
+  end
+
+  def test_currency_equality
+    assert_equal(Currency.new(10, 'USD'), Currency.new(10, 'USD'))
+    assert_equal(Currency.new(20, 'USD'), Currency.new(20, 'USD'))
+    assert_equal(Currency.new(125, 'JPY'), Currency.new(125, 'JPY'))
   end
 
 end
