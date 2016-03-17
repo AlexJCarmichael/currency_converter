@@ -55,4 +55,16 @@ class CurrencyTest < Minitest::Test
     assert_equal(nil, (c(125, 'USD')+ c(125, 'JPY')))
   end
 
+  def test_subtracting_currencies_from_each_other
+    assert_equal(c(20, 'USD'), (c(30, 'USD') - c(10, 'USD')))
+    assert_equal(c(40, 'USD'), (c(60, 'USD') - c(20, 'USD')))
+    assert_equal(c(250, 'JPY'), (c(375, 'JPY') - c(125, 'JPY')))
+  end
+
+  def test_currencies_without_the_same_code_cannot_be_subtracted
+    assert_equal(nil, (c(10, 'JPY') - c(10, 'USD')))
+    assert_equal(nil, (c(20, 'JPY') - c(20, 'USD')))
+    assert_equal(nil, (c(125, 'USD') - c(125, 'JPY')))
+  end
+
 end

@@ -23,4 +23,12 @@ class Currency
       Currency.new((self.amount + other.amount), code)
     end
   end
+
+  def -(other)
+    if self.currency_code == other.currency_code
+      code = self.currency_code
+      Currency.new((self.amount - other.amount), code)
+    end
+  end
+
 end
