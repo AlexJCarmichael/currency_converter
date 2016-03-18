@@ -13,3 +13,7 @@ The class also allows for currency to be added and subtracted from class object 
 
 ###Currency Converter Class
 ___
+
+The Currency Converter class will take Currency object and convert them from one currency type to another (currency type being the government of issue.)
+
+The class will reject any conversion attempt of a currency not in its database.
