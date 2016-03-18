@@ -1,5 +1,4 @@
 
-# Should be able to be multiplied by a Fixnum or Float and return a new Currency object
 class DifferentCurrencyCodeError < StandardError
  def message
    "You cannot add or subtract currencies unless they are from the same government"
@@ -33,6 +32,10 @@ class Currency
       code = self.currency_code
       Currency.new((self.amount - other.amount), code)
     end
+  end
+
+  def *(number)
+    Currency.new((self.amount * number), self.currency_code)
   end
 
 end

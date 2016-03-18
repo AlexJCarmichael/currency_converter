@@ -73,5 +73,19 @@ class CurrencyTest < Minitest::Test
     end
   end
 
+  def test_multiply_currency_by_a_Fixnum_or_Float
+    assert_equal(c(300, 'USD'), (c(30, 'USD')* 10))
+    assert_equal(c(120, 'USD'), (c(60, 'USD') * 2))
+    assert_equal(c(500, 'JPY'), (c(50, 'JPY') * 10))
+  end
+
+  def test_cannot_multiply_currency_by_a_string
+    assert_raises(TypeError) do (c(10, 'JPY') * 'USD')
+    end
+    assert_raises(TypeError) do (c(20, 'JPY') * 'USD')
+    end
+    assert_raises(TypeError) do (c(125, 'USD') * 'JPY')
+    end
+  end
 
 end
