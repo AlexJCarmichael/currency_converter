@@ -1,13 +1,14 @@
 require_relative './currency.rb'
 
 class UnknownCurrencyCodeError < StandardError
- def message
-   "The currency you are trying to convert to or from is not contained in this database."
- end
+  def message
+    "The currency you are trying to convert to or from is not contained in this database."
+  end
 end
 
 class CurrencyConverter
   attr_accessor :rates
+
   def initialize
     @rates = {:USD => 1, :EUR => 0.88665, :JPY => 111.679}
   end
@@ -26,5 +27,4 @@ class CurrencyConverter
       Currency.new(converted, convert_to)
     end
   end
-
 end
