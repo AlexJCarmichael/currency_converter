@@ -88,4 +88,19 @@ class CurrencyTest < Minitest::Test
     end
   end
 
+  def test_accepts_a_single_string_with_a_currency_symbol_as_input
+    assert_equal(c(30, :USD), (Currency.new("$30")))
+    assert_equal(c(120, :USD), (Currency.new("$120")))
+    assert_equal(c(50, :JPY), (Currency.new("¥50")))
+    assert_equal(c(500, :EUR), (Currency.new("€500")))
+    assert_equal(c(125, :EUR), (Currency.new("€125")))
+  end
+
+  def test_accepts_two_strings_as_an_input
+    assert_equal(c(30, :USD), (c("$30", 'USD')))
+    assert_equal(c(120, :USD), (c("$120", 'USD')))
+    assert_equal(c(50, :JPY), (c("¥50", 'JPY')))
+    assert_equal(c(120, :EUR), (c("€120", 'EUR')))
+    assert_equal(c(50, :EUR), (c("€50", 'EUR')))
+  end
 end
